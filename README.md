@@ -35,7 +35,7 @@ run_all.sh         reproduces all Stage 1 results
 ## Installation
 Python 3.11 or newer.
 ```bash
-git clone https://github.com/<your-username>/lifesnaps-recovery-ssm.git
+git clone https://github.com/maittreyyyy/lifesnaps-recovery-ssm.git
 cd lifesnaps-recovery-ssm
 python -m venv .venv && source .venv/bin/activate      # or use conda
 pip install -r requirements.txt

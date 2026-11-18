@@ -1,5 +1,5 @@
 \documentclass[11pt]{article}
-\usepackage[margin=0.9in]{geometry}
+\usepackage[margin=0.85in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern,microtype,graphicx,booktabs,enumitem,tabularx,amsmath}
 \usepackage[hidelinks]{hyperref}
@@ -28,7 +28,7 @@ Consumer wearables record sleep, heart rate, heart rate variability (HRV), and a
 \toprule
 Feedback item & Status \\ \midrule
 Linear state space model first & \textbf{Done.} Stage 1 linear Gaussian model is fitted and evaluated (Section c); all later stages build on it. \\
-4 months vs 8 weeks & \textbf{Reconciled from the data.} Median Fitbit span is 67 days and median mood reporting window is 57 days (about 8 weeks) per person; collection as a whole spans Apr 2021 to Jan 2022 across two cohorts. \\
+4 months vs 8 weeks & \textbf{Reconciled from the paper and the data.} The study ran in two rounds, May 24 to Jul 26 2021 ($n{=}38$) and Nov 15 2021 to Jan 17 2022 ($n{=}34$), each about 9 weeks; the two rounds together total about 4 months, and one participant joined both \cite{lifesnaps}. Per person, the median mood reporting window is 57 days (about 8 weeks). \\
 Count days with mood labels & \textbf{Counted.} 63 of 71 people report mood; 2{,}290 labeled days; 48 people have $\geq$14 labeled days (analysis cohort). \\
 Latent responds to short nights & \textbf{Tested.} Over 346 short nights the state drops and recovers over about 5 days (Figure 2). \\
 Gains after disruptions & \textbf{Tested.} No gain specific to disruption days for the pooled model; motivates per person coupling (Section e). \\
@@ -106,6 +106,8 @@ The recovery state is the best physiology variant and beats the moving average c
 \vspace{-8pt}\caption{\small Wireframe of the Streamlit explorer.}
 \end{figure}
 
+\textbf{Answer to the novelty question.} Stage 1 shows that daily features add little to mood prediction (balanced accuracy gain $+0.004$, CI crossing zero), and an independent LifeSnaps benchmark reports the same: learned representations show no predictive advantage over persistence baselines \cite{gavai}. Both analyses use daily summaries. The raw LifeSnaps Fitbit export holds intraday signals that these analyses did not use: heart rate every 5 to 15\,s (48.7M records, 71 people), HRV every 5\,min during sleep (43 people), and full sleep stage timelines (69 people). The next stages therefore test whether the shape of a night (heart rate decline, HRV profile, stage timing) carries recovery information that nightly averages miss, extending the sleep heart rate curve work of \cite{fudolig} to multi signal nights with mood sampled three times daily.
+
 \section{Innovation and Anticipated Challenges}
 \textbf{Innovation.} Deep state space models and sequence models for wearable mood already exist, so the contribution is not the model class. Prior LifeSnaps work classifies mood or stress from daily features or models sleep within a single night; psychology models mood as a latent process with inertia but without physiology. This project (1) builds the transition from established physiology (sleep restores, exertion loads, recovery decays) so the latent state has a defined meaning, (2) validates that meaning with tests a black box cannot pass (short night response, recovery half life against resting heart rate), and (3) estimates per person coupling between physiological recovery and felt mood, turning the known mismatch between wearable metrics and how people feel into a measured parameter.
 
@@ -139,5 +141,7 @@ Dec 7 to 9 & Final report and presentation & Completed project, presentation rea
 \bibitem{lifesnaps} S. Yfantidou et al., ``LifeSnaps, a 4-month multi-modal dataset capturing unobtrusive snapshots of our lives in the wild,'' \emph{Scientific Data}, vol. 9, 663, 2022.
 \bibitem{fitbitapi} Fitbit Web API Reference, ``Get Sleep Log by Date,'' dev.fitbit.com (dateOfSleep is the date the sleep log ended).
 \bibitem{bias} S. Yfantidou et al., ``Uncovering the Hidden Biases in Personal Informatics,'' ACM, 2025.
+\bibitem{gavai} A. Gavai and J. Heringa, ``When do learned representations improve longitudinal health prediction? A persistence anchored, information matched benchmark of wearable data and personalized models,'' Zenodo, 2026.
+\bibitem{fudolig} M. I. Fudolig et al., ``The two fundamental shapes of sleep heart rate dynamics and their connection to mental health in college students,'' \emph{Digital Biomarkers}, 2024.
 \end{thebibliography}
 \end{document}

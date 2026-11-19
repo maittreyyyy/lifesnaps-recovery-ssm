@@ -86,18 +86,18 @@ with inputs $\mathbf{u}_t$ = (sleep minutes, previous day steps), observations $
 \textbf{Setup and reproducibility.} Python 3.10 on UF HiPerGator (Open OnDemand Jupyter, 16\,GB, 4 cores); DuckDB 1.x, pandas, NumPy, SciPy, scikit learn, statsmodels. Conversion takes about 3 minutes; the three state fit 85\,s; the HMM sweep under 3 minutes. All analysis choices sit in one decisions cell of \texttt{notebooks/lifesnaps\_analysis.ipynb}; the notebook was verified end to end on a synthetic dataset with the same schema, where the HMM recovered a planted recovery to mood link.
 
 \section{Interface Prototype}
-The Streamlit explorer (\texttt{ui/app.py}) replays one participant one morning at a time, as a syncing watch would (Fig.~\ref{fig:ui}). \textbf{Input:} participant, replay date, and two sliders for tonight's sleep and today's steps relative to the person's usual. \textbf{Output:} this morning's state values with change from yesterday, the HMM regime, a five day what if forecast from the fitted state equation, the day's mood reports, a timeline of states (Fig.~\ref{fig:ui2}), regimes and mood with short nights marked, and the evaluation tables. \textbf{Usability:} the replay slider makes the causal order explicit, since each view only uses nights before the selected morning, and the what if sliders expose the fitted dynamics without exposing equations. \textbf{Limitations:} the night detail view (raw 5\,min signals) is not yet included; forecasts use population parameters; the explorer deliberately shows mood next to physiology rather than forecasting it, because the evaluation does not support a mood forecast.
+The Streamlit recovery tracker (\texttt{ui/app.py}) is written for a person tracking their own recovery and replays one participant one morning at a time, as a syncing watch would (Fig.~\ref{fig:ui}). The strain state is shown as a recovery score, $100(1-\Phi(\text{strain}))$, where 50 is the person's usual night, with plain labels (well recovered, about usual, under recovered). \textbf{Input:} person, morning, and two plan sliders (tonight's sleep and today's activity, from much less to much more than usual). \textbf{Output:} the score with change from yesterday, plain comparisons of overnight heart rate, HRV, disruption and sleep length, a short advice line, tomorrow's expected score under the plan, the day's mood check ins, and a trend view of the score with short nights and mood (Fig.~\ref{fig:ui2}); model details sit in a separate tab, regimes and mood with short nights marked, and the evaluation tables. \textbf{Usability:} each view uses only nights up to the selected morning, the plan sliders expose the fitted dynamics in everyday terms, and technical terms are confined to the How it works tab. \textbf{Limitations:} the night detail view (raw 5\,min signals) is not yet included; forecasts use population parameters; the explorer deliberately shows mood next to physiology rather than forecasting it, because the evaluation does not support a mood forecast.
 
 \begin{figure}[t]
 \centering\includegraphics[width=\linewidth]{ui_morning.png}
-\caption{Explorer, morning view with the what if forecast.}
+\caption{Recovery tracker, morning view: score, plain comparisons, and the plan for tonight.}
 \label{fig:ui}
 \end{figure}
 
 
 \begin{figure}[t]
 \centering\includegraphics[width=\linewidth]{ui_timeline.png}
-\caption{Explorer, timeline view: hidden states, HMM regime and mood reports on one time axis, short nights shaded.}
+\caption{Recovery tracker, trend view: recovery score over time with short nights marked, and mood check ins.}
 \label{fig:ui2}
 \end{figure}
 

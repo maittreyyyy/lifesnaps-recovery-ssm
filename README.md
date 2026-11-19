@@ -55,7 +55,7 @@ On UF HiPerGator, `scripts/setup_env_hipergator.sh <group>` creates a conda envi
 from Zenodo record 7229547 and unzip it under `~/Data Analysis Zenodo/Data/` (or set the `LS_BASE` environment
 variable to another base folder). Open `notebooks/lifesnaps_analysis.ipynb` and run all cells. The first run converts
 the raw BSON export to Parquet (about 3 minutes); the full notebook takes about 10 minutes. All analysis choices are in
-the *Decisions* cell. The last cell writes `d2_export.zip`.
+the *Decisions* cell. The last cell writes `d2_export.zip`. The committed notebook already contains every output from the HiPerGator run on the real data, so it can be read without rerunning.
 
 **2. Interface.** Unzip `d2_export.zip` into `data/processed/d2/` (the repository already contains a copy), then:
 ```bash

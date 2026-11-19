@@ -1,0 +1,68 @@
+{
+ "res_lr": [
+  {
+   "model": "carry forward (previous mood)",
+   "bal_acc": 0.357,
+   "macro_f1": 0.356
+  },
+  {
+   "model": "time + previous mood",
+   "bal_acc": 0.352,
+   "macro_f1": 0.304
+  },
+  {
+   "model": "+ nightly averages",
+   "bal_acc": 0.348,
+   "macro_f1": 0.314
+  },
+  {
+   "model": "+ night features",
+   "bal_acc": 0.341,
+   "macro_f1": 0.304
+  }
+ ],
+ "res_x": [
+  {
+   "model": "time + previous mood",
+   "bal_acc": 0.352,
+   "macro_f1": 0.304
+  },
+  {
+   "model": "+ recovery state",
+   "bal_acc": 0.353,
+   "macro_f1": 0.306
+  },
+  {
+   "model": "+ state + night features",
+   "bal_acc": 0.343,
+   "macro_f1": 0.305
+  }
+ ],
+ "funnel": [
+  {
+   "step": "all sleep records",
+   "nights": 4141,
+   "people": 69
+  },
+  {
+   "step": "main sleep only",
+   "nights": 3688,
+   "people": 69
+  },
+  {
+   "step": "180 to 900 min asleep",
+   "nights": 3562,
+   "people": 65
+  },
+  {
+   "step": "one night per date",
+   "nights": 3431,
+   "people": 65
+  },
+  {
+   "step": "inside mood window",
+   "nights": 2338,
+   "people": 57
+  }
+ ]
+}

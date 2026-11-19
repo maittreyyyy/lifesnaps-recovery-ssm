@@ -9,3 +9,7 @@ data/processed/
 docs/*.aux
 docs/*.log
 docs/*.out
+
+!data/processed/
+data/processed/*
+!data/processed/d2/

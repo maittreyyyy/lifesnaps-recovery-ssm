@@ -7,6 +7,10 @@ jupyterlab>=4.0
 ipykernel>=6.0
 nbformat>=5.9
 streamlit>=1.30
+duckdb>=1.0
+pyarrow>=14
+pymongo>=4.6
+statsmodels>=0.14
 # later stages (neural extension)
 torch>=2.2
 pyro-ppl>=1.9

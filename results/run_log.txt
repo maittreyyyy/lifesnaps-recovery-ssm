@@ -1,0 +1,2 @@
+people 48 | panel days 5235 | reports 4912
+panel input coverage: {'minutesAsleep': np.float64(0.51), 'sleep_efficiency': np.float64(0.51), 'resting_hr': np.float64(0.58), 'steps': np.float64(0.62), 'rmssd': np.float64(0.34)}
